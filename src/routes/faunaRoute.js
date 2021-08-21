@@ -9,7 +9,9 @@ router.get("/all", controller.getAll)
 
 router.get("/:nome",controller.getNome)
 
-router.get("/:habitat", controller.getHabitat)
+router.get("/habitat/:habitat", controller.getHabitat)
+
+router.get("/extincao", controller.getExtincao)
 
 
 module.exports = router
