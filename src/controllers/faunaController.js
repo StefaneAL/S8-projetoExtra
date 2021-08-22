@@ -16,17 +16,15 @@ const getNome =(req, res) =>{
 }
 
 const getHabitat = (req,res) => {
-    const habitatReq = req.params.habitat
+    const habitatReq = req.query.habitat
+
     let faunaList = []
     
-
     faunaB.forEach((fauna) => {
-        let habitatList = fauna.habitat
+        let habitatList = fauna.habitat.split(",")
 
-        console.log(fauna)
-        console.log(habitatList)
+        console.log(faunaList)
 
-        
         for (habitat of habitatList){
             if (habitat.includes(habitatReq)){
                 faunaList.push(fauna)
@@ -35,9 +33,12 @@ const getHabitat = (req,res) => {
         
     });
     
-    // const filterHabitat = faunaB.find(fauna => fauna.habitat.includes(habitatReq))
+  //const filterHabitat = faunaB.filter(fauna => fauna.habitat === habitatReq)
 
-    // res.status(200).send(filterHabitat)
+  //const filterHabitat = JSON.parse("faunaBrasileira.json").filter(({habitat}) => habitat === habitatReq)
+
+
+    res.status(200).send(faunaList)
 }
 
 const getExtincao =(req, res) =>{
